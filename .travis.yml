@@ -20,6 +20,6 @@ jobs:
         - export PATH="$HOME/.yarn/bin:$PATH"
       install: yarn global add semantic-release@15.13.12 semantic-release-gitmoji@1.3.0
       script: npx semantic-release
-      if: branch = master AND NOT tag AND $TRAVIS_PULL_REQUEST = false
+      if: branch = master AND NOT tag AND type != pull_request
 matrix:
   fast_finish: true
