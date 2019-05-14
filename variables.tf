@@ -1,7 +1,8 @@
 variable "project" {
-  default = "Silver Path"
+  default     = "Silver Path"
   description = "Project name"
 }
+
 variable "aws-account-id" {
   description = "AWS account ID"
 }

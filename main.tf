@@ -8,36 +8,36 @@ provider "aws" {
 # so when you will delete the files of the state it won't be able to sync and destroy too
 # meaning the s3 resource is the only one you will to destroy manually
 resource "aws_s3_bucket" "terraform-state-storage-s3" {
-    bucket = "${var.aws-s3-bucket}"
- 
-    versioning {
-      enabled = true
-    }
- 
-    lifecycle {
-      prevent_destroy = true
-    }
- 
-    tags {
-      Name = "S3 Remote Terraform State Store"
-      Project = "${var.project}"
-    }      
+  bucket = "${var.aws-s3-bucket}"
+
+  versioning {
+    enabled = true
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+
+  tags {
+    Name    = "S3 Remote Terraform State Store"
+    Project = "${var.project}"
+  }
 }
 
 # create a dynamodb table for locking the state file
 resource "aws_dynamodb_table" "dynamodb-terraform-state-lock" {
-  name = "${var.aws-dynamodb-table}"
-  hash_key = "LockID"
-  read_capacity = 20
+  name           = "${var.aws-dynamodb-table}"
+  hash_key       = "LockID"
+  read_capacity  = 20
   write_capacity = 20
- 
+
   attribute {
     name = "LockID"
     type = "S"
   }
- 
+
   tags {
-    Name = "DynamoDB Terraform State Lock Table"
+    Name    = "DynamoDB Terraform State Lock Table"
     Project = "${var.project}"
   }
 }
