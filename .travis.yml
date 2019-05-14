@@ -1,6 +1,11 @@
 language: node_js
 git:
   submodules: false
+cache:
+  yarn: true
+  npm: true
+  directories:
+    - node_modules
 jobs:
   include:
     - stage: test
