@@ -13,7 +13,11 @@
     "@silver-path/generator-trod": "^1.5.2",
     "commitlint": "^7.6.1",
     "commitlint-config-gitmoji": "^1.0.1",
-    "husky": "^2.2.0"
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6"
+  },
+  "scripts": {
+    "lint": "terraform fmt -write=true ."
   },
   "publishConfig": {
     "access": "public"
