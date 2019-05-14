@@ -7,6 +7,7 @@ matrix:
         - wget https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip -O /tmp/terraform.zip
         - sudo unzip -d /usr/local/bin/ /tmp/terraform.zip
       script:
+        - terraform init
         - make test
         - make fmt
     - language: node_js
